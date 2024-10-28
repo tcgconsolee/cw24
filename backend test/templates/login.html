@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form method ="post">
+        <input type="text" placeholder = "Username" id = "uname" name="uname" value = "{{value}}">
+        <input type="password" placeholder = "Password" id = "psw" name ="psw">
+        <input type="submit">        
+    </form>
+    <h1>INVALID USERNAME OR PASSWORD</h1>
+    <script>
+        if(document.getElementById("uname").value == "") {
+            document.querySelector("h1").style.display = "none"
+        } else {
+            document.querySelector("h1").style.display = "block"
+        }
+    </script>
+</body>
+</html>
