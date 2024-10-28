@@ -5,7 +5,7 @@ from itsdangerous import URLSafeTimedSerializer, SignatureExpired, BadTimeSignat
 from flask_mail import Mail, Message
 
 app = Flask(__name__)
-app.config.from_pyfile('config.cfg')
+app.config.from_pyfile('.env')
 
 s= URLSafeTimedSerializer('iiao@67165')
 mail = Mail(app)
@@ -15,7 +15,6 @@ def index():
     return render_template('index.html')
 
 app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///db.sqlite"
-app.config["SECRET_KEY"] = "iiao@67165"
 db = SQLAlchemy()
  
 login_manager = LoginManager(app)
@@ -79,21 +78,22 @@ def login():
 
             msg = Message('Confirm Email', sender="codenet@noreply.com", recipients=[email])
 
-            link = url_for('confirm_email', token=token, user=user, _external = True)
+            link = url_for('confirm_email', token=token, _external = True)
 
             msg.body = "Your link is {}".format(link)
 
             mail.send(msg)
     return render_template("login.html")
 
-@app.route('/confirm_email/<token>,<user>')
-def confirm_email(token, user):
+@app.route('/confirm_email/<token>')
+def confirm_email(token):
     try:
         email = s.loads(token, salt="email-confirmation", max_age = 3600)
     except BadTimeSignature:
         return "<h1> WRONG TOKEN </h1>"
     except SignatureExpired:
         return "<h1> TOKEN EXPIRED </h1>"
+    user = Users.query.filter_by(email=email).first()
     login_user(user)
     return redirect(url_for("index"))
 
