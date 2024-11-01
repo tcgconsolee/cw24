@@ -250,13 +250,24 @@ $(".entities-grid div").each(function() {
 
 // search bounty
 
-$(".search-btn").keypress(e=>{
+$("#search-bounty").keypress(e=>{
     if(e.which == 13) {
         $(".tarname").each(function(i) {
-            if($(this).html().toLowerCase().includes($(".search-btn input").val().toLowerCase())) {
+            if($(this).html().toLowerCase().includes($("#search-bounty input").val().toLowerCase())) {
                 $(".card").eq(i).css("display", "block")
             } else {
                 $(".card").eq(i).css("display", "none")
+            }
+        })
+    }
+})
+$("#search-cases").keypress(e=>{
+    if(e.which == 13) {
+        $(".folder-title").each(function(i) {
+            if($(this).html().toLowerCase().includes($("#search-cases input").val().toLowerCase())) {
+                $(".folder").eq(i).css("display", "block")
+            } else {
+                $(".folder").eq(i).css("display", "none")
             }
         })
     }
@@ -320,4 +331,78 @@ $(".dispatch-btn").click(function() {
     setTimeout(() => {
         alert("The team has been dispatched to your current location! Arriving at the soonest to rescue you from danger!")
     }, 100);
+})
+
+// case upload
+
+$(".upload-btn").click(function() {
+    if(!(window.location.href.includes("logged_in=True"))) {
+        alert("You must be logged in to upload your own clues!")
+        return;
+    }
+    $(".upload-window").show(500)
+})
+function createNewCase(title) {
+    let code = 
+    `
+    <div class="new2 folder">
+        <div class="main-body">
+            <div class="folder-title">
+                <p class = "title">${title}</p>
+                <p>reported by ${window.location.href.split("username=")[1]}</p>
+            </div>
+        </div>
+        <div class="upper-fold">
+            <svg xmlns="http://www.w3.org/2000/svg" width="335" height="44" viewBox="0 0 335 44" fill="none">
+                <path d="M15 0.5H228.855C230.812 0.5 232.749 0.896008 234.548 1.66417L332.555 43.5H0.5V15C0.5 6.99187 6.99187 0.5 15 0.5Z" fill="#D9D9D9" stroke="#050505"/>
+            </svg>
+        </div>
+        <div class="right-fold"></div>
+    </div>
+    `
+    $(".folder").each(function(){
+        $(this).off('click')
+    })
+    $(".cases").prepend($(code));
+}
+function createNewCluePage(title, header, files) {
+    let code = 
+    `
+    <div class="new1 clues-window" id = "${replaceSpaces(title)}">
+        <div class="close"><img src="../static/imgs/close.svg" alt=""></div>
+        <div class="clues-partition">
+            <p></p>
+        </div>
+        <div class="header">"${header}"</div>
+        <div class="imgs">
+            ${files}
+        </div>
+    </div>
+    `
+    $(document.body).append($(code));
+    $(".folder").each(function(i){
+        $(this).click(function() {
+            $(`#${replaceSpaces($(".title").eq(i).html())}`).show(500);
+            $(`#${replaceSpaces($(".title").eq(i).html())} .clues-partition p`).html(`CLUES - ${$(".title").eq(i).html()}`)
+        })
+    })
+    $(".close").click(function() {
+        $(".close").parent().hide(500)
+    })
+}
+$(".upload-create-btn").click(function() {
+    createNewCase($(".upload-input").val())
+    createNewCluePage($(".upload-input").val(), $(".upload-quote").val(), $(".upload-imgs").html())
+    $(".upload-window").hide(500);
+})
+// case view
+function replaceSpaces(str) {
+    console.log(str.replace(/ /g, "_").toLowerCase())
+    return str.replace(/ /g, "_").toLowerCase();
+}
+$(".folder").each(function(i){
+    $(this).click(function() {
+        $(`#${replaceSpaces($(".title").eq(i).html())}`).show(500);
+        $(`#${replaceSpaces($(".title").eq(i).html())} .clues-partition p`).html(`CLUES - ${$(".title").eq(i).html()}`)
+    })
 })

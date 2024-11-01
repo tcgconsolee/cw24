@@ -178,7 +178,7 @@ input::selection {
     top: 0;
     left: 0;
     font-size: 10px;
-    height: 15%;
+    height: 10%;
 }
 
 .community-window {
@@ -478,7 +478,7 @@ form *:nth-child(3) {
 /* BOUNTY */
 
 
-.filter-bar {
+.bar {
     position: absolute;
     top: 15%;
     display: grid;
@@ -526,7 +526,7 @@ form *:nth-child(3) {
     height: 65%;
     width: 95%;
     position: absolute;
-    left: 2.5vw;
+    left: 2.5%;
     top: 30%;
 }
 .cards {
@@ -692,4 +692,198 @@ form *:nth-child(3) {
 .location p {
     text-wrap: nowrap;
     font-size: 10px;
+}
+
+/* cases */
+
+.full-case-window .bar {
+    width: 85%;
+    grid-template-columns: 85% 15%;
+}
+.upload-btn {
+    width: 100%;
+    height: 100%;
+    font-size: 9px;
+}
+.cases {
+    position: absolute;
+    display: grid;
+    left: 2.5%;
+    top: 30%;
+    width: 95%;
+    height: 65%;
+    grid-auto-rows: 48.75%;
+    row-gap: 10%;
+    grid-template-columns: auto auto auto;
+    column-gap: 5%;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+.folder {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+.folder:nth-child(3n) {
+    margin-left: -5px;
+}
+.folder:nth-child(3n-1) {
+    margin-left: -2.5px;
+}
+.main-body {
+    position: absolute;
+    top: 10%;
+    width: 100%;
+    height: 90%;
+    border: #050505 solid 1px;
+    background: #D9D9D9;
+    z-index: 6;
+}
+.upper-fold {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 40%;
+    height: 10%;
+    z-index: 5;
+}
+.right-fold {
+    position: absolute;
+    right: 0;
+    border-top-right-radius: 15px;
+    width: 90%;
+    z-index: 4;
+    height: 2.5%;
+    top: 7.5%;
+    border: #050505 solid 1px;
+}
+.main-body, .main-body *, .upper-fold, .upper-fold *, .right-fold, .right-fold * {
+    cursor: pointer;
+}
+.folder-title {
+    width: min-content;
+    height: min-content;
+    position: relative;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+.folder-title p:nth-child(1) {
+    margin-block-start: 0em;
+    font-size: 14px;
+    text-wrap: nowrap;
+}
+.folder-title p:nth-child(2) {
+    margin-block-start: -1.5em;
+    font-size: 10px;
+    text-wrap: nowrap;
+}
+
+/* case upload */
+
+.upload-window {
+    display: none;
+    height: 75vh;
+    width: 50vw;
+    left: 65vw;
+    top: 47.5vh;
+    transform: translate(-50%, -50%);
+}
+.upload-bottom {
+    position: absolute;
+    top: 10%;
+    height: 90%;
+    width: 100%;
+}
+.upload-heading {
+    position: absolute;
+    left: 2.5vw;
+    top: 5vh;
+    font-size: 16px;
+}
+.upload-input {
+    position: absolute;
+    top: 12.5vh;
+    left: 2.5vw;
+    text-align: left;
+    width: 30vw;
+    height: min-content;
+    border-bottom: 1px solid #050505;
+}
+.upload-quotes {
+    position: absolute;
+    left: 2.5vw;
+    top: 20vh;
+    font-size: 16px;
+}
+.upload-quote {
+    position: absolute;
+    top: 27.5vh;
+    left: 2.5vw;
+    text-align: left;
+    width: 30vw;
+    height: min-content;
+    border-bottom: 1px solid #050505;
+}
+.upload-imgs {
+    position: absolute;
+    top: 45vh;
+    left: 2.5vw;
+    height: 10vh;
+}
+.upload-imgs img {
+    height: 10vh;
+}
+.upload-imgs-btn {
+    position: absolute;
+    top: 35vh;
+    left: 2.5vw;
+    width: 15vw;
+    height: 5vh;
+    font-size: 8px;
+}
+.upload-create-btn {
+    position: absolute;
+    bottom: 5vh;
+    width: 15vw;
+    height: 5vh;
+    font-size: 8px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+/* clues */
+
+.clues-window {
+    display: none;
+    height: 75vh;
+    width: 50vw;
+    left: 65vw;
+    top: 47.5vh;
+    transform: translate(-50%, -50%);
+}
+.header {
+    position: absolute;
+    top: 15%;
+    width: 100%;
+    font-size: 10px;
+    text-align: center;
+}
+.imgs {
+    position: absolute;
+    top: 25%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
+    height: 70%;
+    display: grid;
+    grid-template-columns: 47.5% 47.5%;
+    grid-template-rows: 47.5% 47.5%;
+    column-gap: 5%;
+    row-gap: 5%;
+}
+.imgs img {
+    height: 100%;
+    width: 100%;
 }

@@ -80,7 +80,7 @@ def register():
 @app.route("/login", methods=["GET", "POST"])
 def login():
     if current_user.is_authenticated:
-        return redirect(url_for("index", logged_in = True))
+        return redirect(url_for("index", logged_in = True, username = current_user.username))
 
 
     if request.method == "POST":
@@ -92,7 +92,7 @@ def login():
     
         if user.password == request.form.get("psw"):
             login_user(user)
-            return redirect(url_for("index", logged_in = True))
+            return redirect(url_for("index", logged_in = True, username = user.username))
     return render_template("login.html")
 
 @app.route('/inbox/<uname>')
@@ -123,7 +123,7 @@ def confirm_email(token):
         return "<h1> TOKEN EXPIRED </h1>"
     user = Users.query.filter_by(email=email).first()
     login_user(user)
-    return redirect(url_for("index", logged_in = True))
+    return redirect(url_for("index", logged_in = True, username = user.username))
 
 @app.route("/logout")
 def logout():

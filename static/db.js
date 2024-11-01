@@ -34,10 +34,17 @@ function navCoordinates() {
     })
     return array;
 }
+function cluesnew() {
+    var array1 = [];
+    $(".new1").each(function() {
+        array1.push(`<div class = "new1 clues-window" id = "${$(this).attr('id')}">${$(this).html()}</div>`)
+    })
+    return {page:array1, folders: $(".cases").html()};
+}
 function addData() {
     var transaction = db.transaction(["community"],"readwrite");
     var store = transaction.objectStore("community");
-    var community = {community: document.getElementsByClassName("msgs")[0].innerHTML, nav: navCoordinates(), accepted: accepted, mission: $(".mission").html()}
+    var community = {community: document.getElementsByClassName("msgs")[0].innerHTML, nav: navCoordinates(), accepted: accepted, mission: $(".mission").html(), new: cluesnew()}
     var request = store.put(community,1);
     request.onerror = function(e) {}
     request.onsuccess = function(e) {}
@@ -71,6 +78,25 @@ function restoreData(e) {
                 $(".mission").append("<p class = 'nothing'>Select a bounty first!</p>")
                 accepted=false;
             })
+        }
+        if(result.new) {
+            if(result.new.page) {
+                result.new.page.forEach(a => {
+                    $(document.body).append($(a));
+                    $(".close").click(function() {
+                        $(".close").parent().hide(500)
+                    })
+                });
+            }
+            if(result.new.folders) {
+                $(".cases").html(result.new.folders)
+                $(".folder").each(function(i){
+                    $(this).click(function() {
+                        $(`#${replaceSpaces($(".title").eq(i).html())}`).show(500);
+                        $(`#${replaceSpaces($(".title").eq(i).html())} .clues-partition p`).html(`CLUES - ${$(".title").eq(i).html()}`)
+                    })
+                })
+            }
         }
     }   
 }
