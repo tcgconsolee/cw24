@@ -1,3 +1,9 @@
+import os;
+from dotenv_vault import load_dotenv
+
+load_dotenv()
+
+
 from flask import Flask, render_template, redirect, url_for, request
 from flask_login import LoginManager, UserMixin, login_user, current_user, logout_user
 from flask_sqlalchemy import SQLAlchemy
