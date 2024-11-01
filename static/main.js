@@ -313,3 +313,11 @@ $(".accept-btn").each(function() {
 $(".ongoing-btn").click(function() {
     $(".missions-window").show(500);
 })
+$(".dispatch-btn").click(function() {
+    $(".dispatch-btn").css("background", "#ADADAD")
+    $(".dispatch-btn p").html("DISPATCHED")
+    $(".dispatch-btn").css("pointer-events", "none")
+    setTimeout(() => {
+        alert("The team has been dispatched to your current location! Arriving at the soonest to rescue you from danger!")
+    }, 100);
+})

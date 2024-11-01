@@ -617,3 +617,47 @@ form *:nth-child(3) {
     margin-block-start: 0.5em;
     max-width: 16.6725vw;
 }
+
+/* crew */
+
+.dispatch-box {
+    position: absolute;
+    left: 2.5vw;
+    top: 12.5%;
+    width: 30%;
+    height: 80%;
+    display: block;
+}
+.help-text {
+    width: 95%;
+    margin-inline-start: 2.5%;
+    text-align: center;
+    font-size: 11px;
+    margin-block-start: 5%;
+}
+.team {
+    margin-block-start: 7.5%;
+}
+.person {
+    display: grid;
+    grid-template-columns: 5% 95%;
+    font-size: 8px;
+    margin-inline-start: 5%;
+    margin-bottom: 2.5%;
+}
+.person img {
+    max-height: 4em;
+}
+.pname {
+    text-align: left;
+    margin-inline-start: 7.5%;
+}
+.dispatch-btn {
+    position: absolute;
+    width: 40%;
+    height: 10%;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 2.5vh;
+    font-size: 10px;
+}
