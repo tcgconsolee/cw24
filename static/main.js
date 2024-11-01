@@ -1,9 +1,9 @@
-let focused = [];
+var focused = [];
 let mouse = {}
 let shifted = false;
-let occured = 0;
+var occured = 0;
 let isDragging = false;
-let grouped = false;
+var grouped = false;
 
 $(document).on('keyup keydown', function(e){shifted = e.shiftKey} );
 
@@ -12,7 +12,7 @@ $(".nav-icon").each(function (i) {
         isDragging = true;
         setTimeout(() => {
             if(!focused.includes(i)) {
-                if(grouped) {
+                if(grouped && !shifted) {
                     $(".selected").each(function() { 
                         $(this).removeClass("selected")
                         if(focused.length > 1) {
@@ -30,6 +30,9 @@ $(".nav-icon").each(function (i) {
             }            
             $(this).addClass("selected")
         }, 10);
+        if(focused.length > 1) {
+            grouped = true;
+        }
     })
     $(document).mouseup(function() {
         isDragging = false;
@@ -78,6 +81,31 @@ $(".nav-icon").each(function (i) {
             $(".group").css("transform", "translate(-50%, -50%)")
         }
     })
+    $(this).dblclick(function(){
+        $(`.full-${$(this).attr('id')}-window`).show(500)
+    })
+})
+$(".maximize").each(function(i){
+    $(this).click(function(){
+        (($(this).parent()).parent()).parent().animate({width: "100vw", height: "100vh", top: "50%"})
+        $(this).css("display", "none");
+        $(".restore").eq(i).css("display", "block")
+    })
+})
+$(".restore").each(function(i){
+    $(this).click(function(){
+        (($(this).parent()).parent()).parent().animate({width: "97.5vw", height: "90vh", top: "47.5%"})
+        $(this).css("display", "none");
+        $(".maximize").eq(i).css("display", "block")
+    })
+})
+$(".cross").each(function(){
+    $(this).click(function(){
+        (($(this).parent()).parent()).parent().hide(500)
+    })
+})
+$(".close").click(function() {
+    $(".close").parent().hide(500)
 })
 $(document).mousedown(function () {
     if (focused.length > 0 && !shifted && !grouped) {
@@ -102,7 +130,7 @@ let created = 0;
 $(".back").mousedown(function() {
     rectCret = true;
     rectStart = {x: mouse.x, y: mouse.y}
-    if(grouped) {
+    if(grouped && !shifted) {
         $(".selected").each(function() { 
             $(this).removeClass("selected")
             if(focused.length > 1) {
@@ -185,4 +213,103 @@ $(document).mousemove(function() {
     $(".rect").css("height", Math.abs(mouse.y-rectStart.y))
     $(".rect").css("left", rectStart.x + offset.x);
     $(".rect").css("top", rectStart.y + offset.y);
+})
+
+// messaging
+function sendMessage(msg) {
+    let code =
+    `
+    <div class="msg-container">
+        <div class="msg" id = "s">
+            <p>${msg}&lrm;</p>
+        </div>
+    </div>
+    `
+    $(".msgs").append($(code))
+}
+$(".msg-btn").keypress(e=> {
+    if(e.which == 13) {
+        if($(".msg-btn input").val() == "") return;
+        sendMessage($(".msg-btn input").val())
+        $(".msg-btn input").val("")
+    }
+})
+
+// info
+let shown;
+
+$(".entities-grid div").each(function() {
+    $(this).click(function() {
+        if(shown) {
+            shown.css("display", "none")
+        }
+        $(`.${($(this).attr('class')).split("-")[0]}`).css("display", "block")
+        shown = $(`.${($(this).attr('class')).split("-")[0]}`);
+    })
+})
+
+// search bounty
+
+$(".search-btn").keypress(e=>{
+    if(e.which == 13) {
+        $(".tarname").each(function(i) {
+            if($(this).html().toLowerCase().includes($(".search-btn input").val().toLowerCase())) {
+                $(".card").eq(i).css("display", "block")
+            } else {
+                $(".card").eq(i).css("display", "none")
+            }
+        })
+    }
+})
+$(".dropdown").change(function() {
+    $(".card").each(function() {
+        if($(this).attr('data-difficulty').includes($(".dropdown").val())) {
+            $(this).css("display", "block")
+        } else {
+            $(this).css("display", "none")
+        }
+    })
+})
+function acceptMission() {
+    let code = 
+    `
+            <img src = "../static/imgs/bigfoot.svg" class = "banner">
+            <p style = "margin-block-start:.25em;font-size: 12px;">BIGFOOT</p>
+            <div style = "display:grid;grid-template-columns:auto auto;margin-block-start:-0.75em;">
+                <img src = "../static/imgs/coins.svg" style = "max-height: 1.5em;margin-inline-start:-.25em">
+                <p style = "margin-block-start:0.5em;margin-inline-start:-.5em;font-size:10px;">1500</p>
+            </div>
+            <p style = "font-size:9px;margin-inline-start:2.5%;width:95%;">
+                Bigfoot, also known as Sasquatch, is a legendary ape-like creature said to inhabit remote forests, particularly in the Pacific Northwest of North America. Descriptions often depict it as a towering figure covered in dark fur, with large footprints and a strong, musky odour.
+            </p>
+            <div class="cancel-btn" style = "font-size:10px;margin-block-start: 1em;">
+                <p style="padding:0 0.5em;">CANCEL MISSION</p>
+            </div>
+    `
+    $(".nothing").css("display", "none")
+    $(".mission").prepend($(code))
+    $(".cancel-btn").click(function() {
+        $(".missions-window").hide(500)
+        $(".mission").empty();
+        $(".mission").append("<p class = 'nothing'>Select a bounty first!</p>")
+        accepted=false;
+    })
+}
+$(".accept-btn").each(function() {
+    $(this).click(function() {
+        if(window.location.href.includes("logged_in=True")) {
+            if(accepted) {
+                alert("You cannot accept more than one bounty at a time!")
+                return;
+            }
+            accepted= true;
+            $(".missions-window").show(500)
+            acceptMission()
+        } else {
+            alert("You must login first before accepting a bounty!")
+        }
+    })
+})
+$(".ongoing-btn").click(function() {
+    $(".missions-window").show(500);
 })

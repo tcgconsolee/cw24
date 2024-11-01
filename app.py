@@ -46,6 +46,18 @@ def register():
             return render_template("sign_up.html", value = "USER ALREADY EXISTS")
         if not db.session.query(Users).filter_by(email=request.form.get("email")).count() < 1:
             return render_template("sign_up.html", value = "EMAIL ALREADY IN USE")
+        if request.form.get("uname") == "":
+            return render_template("sign_up.html", value = "USERNAME IS BLANK")
+        if request.form.get("psw") == "":
+            return render_template("sign_up.html", value = "PASSWORD IS BLANK")
+        if request.form.get("email") == "":
+            return render_template("sign_up.html", value = "EMAIL IS BLANK")
+        try:
+            msg = Message('You have created a new account', sender="codenet@noreply.com", recipients=[request.form.get("email")], body="You have created a new account in Codenet!")
+            mail.send(msg)
+        except:
+            return render_template("sign_up.html", value = "EMAIL IS INVALID")
+
         user = Users(username=request.form.get("uname"),
                      password=request.form.get("psw"),
                      email=request.form.get("email"))
@@ -62,7 +74,7 @@ def register():
 @app.route("/login", methods=["GET", "POST"])
 def login():
     if current_user.is_authenticated:
-        return redirect(url_for("index"))
+        return redirect(url_for("index", logged_in = True))
 
 
     if request.method == "POST":
@@ -73,17 +85,27 @@ def login():
     
     
         if user.password == request.form.get("psw"):
-            email = user.email
-            token = s.dumps(email, salt="email-confirmation")
-
-            msg = Message('Confirm Email', sender="codenet@noreply.com", recipients=[email])
-
-            link = url_for('confirm_email', token=token, _external = True)
-
-            msg.body = "Your link is {}".format(link)
-
-            mail.send(msg)
+            login_user(user)
+            return redirect(url_for("index", logged_in = True))
     return render_template("login.html")
+
+@app.route('/inbox/<uname>')
+def inbox(uname):
+    user = Users.query.filter_by(
+        username=uname).first()
+    if not user:
+        return render_template("login.html", value = uname)
+    email = user.email
+    token = s.dumps(email, salt="email-confirmation")
+
+    msg = Message('Confirm Email', sender="codenet@noreply.com", recipients=[email])
+
+    link = url_for('confirm_email', token=token, _external = True)
+
+    msg.body = "Your link is {}".format(link)
+
+    mail.send(msg)
+    return render_template("mailed.html")
 
 @app.route('/confirm_email/<token>')
 def confirm_email(token):
@@ -95,7 +117,7 @@ def confirm_email(token):
         return "<h1> TOKEN EXPIRED </h1>"
     user = Users.query.filter_by(email=email).first()
     login_user(user)
-    return redirect(url_for("index"))
+    return redirect(url_for("index", logged_in = True))
 
 @app.route("/logout")
 def logout():

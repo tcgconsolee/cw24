@@ -3,20 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="stylesheet" href="../static/style.css">
+    <title>Login</title>
 </head>
 <body>
+    <div class="hero">
+        <p>LOGIN</p>
+    </div>
+    <div class="close">
+        <img src="../static/imgs/close.svg" alt="" onclick = "window.location.href = '/'">
+    </div>
     <form method ="post">
         <input type="text" placeholder = "Username" id = "uname" name="uname" value = "{{value}}">
         <input type="password" placeholder = "Password" id = "psw" name ="psw">
-        <input type="submit">        
+        <div class="forgot-btn" onclick = "window.location.href = `/inbox/${document.getElementById('uname').value}`">Forgot your password?</div>
+        <input type="submit" value = "LOGIN">        
     </form>
-    <h1>INVALID USERNAME OR PASSWORD</h1>
+    <p class = "invalid">INVALID USERNAME OR PASSWORD</p>
     <script>
         if(document.getElementById("uname").value == "") {
-            document.querySelector("h1").style.display = "none"
+            document.querySelector(".invalid").style.display = "none"
         } else {
-            document.querySelector("h1").style.display = "block"
+            document.querySelector(".invalid").style.display = "block"
         }
     </script>
 </body>
