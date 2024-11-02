@@ -390,7 +390,22 @@ function createNewCluePage(title, header, files) {
         $(".close").parent().hide(500)
     })
 }
+var created2 = false;
 $(".upload-create-btn").click(function() {
+    if($(".upload-input").val() == "") {
+        alert("You cannot have a case with a blank name!")
+        return;
+    }
+    $(".title").each(function() {
+        if($(".upload-input").val() == $(this).html()) {
+            alert("A case with this name already exists! Select a new name!")
+            created2=true;
+        }
+    })
+    if(created2) {
+        created2 = false;
+        return;
+    }
     createNewCase($(".upload-input").val())
     createNewCluePage($(".upload-input").val(), $(".upload-quote").val(), $(".upload-imgs").html())
     $(".upload-window").hide(500);

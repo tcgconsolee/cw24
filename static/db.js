@@ -50,6 +50,7 @@ function addData() {
     request.onsuccess = function(e) {}
 }
 var accepted = false;
+var created2=false;
 function restoreData(e) {
     var key = 1
     var transaction = db.transaction(["community"],"readonly");
@@ -95,6 +96,26 @@ function restoreData(e) {
                         $(`#${replaceSpaces($(".title").eq(i).html())}`).show(500);
                         $(`#${replaceSpaces($(".title").eq(i).html())} .clues-partition p`).html(`CLUES - ${$(".title").eq(i).html()}`)
                     })
+                })
+                $(".upload-create-btn").off('click')
+                $(".upload-create-btn").click(function() {
+                    if($(".upload-input").val() == "") {
+                        alert("You cannot have a case with a blank name!")
+                        return;
+                    }
+                    $(".title").each(function() {
+                        if($(".upload-input").val() == $(this).html()) {
+                            alert("A case with this name already exists! Select a new name!")
+                            created2=true;
+                        }
+                    })
+                    if(created2) {
+                        created2=false;
+                        return;
+                    }
+                    createNewCase($(".upload-input").val())
+                    createNewCluePage($(".upload-input").val(), $(".upload-quote").val(), $(".upload-imgs").html())
+                    $(".upload-window").hide(500);
                 })
             }
         }
