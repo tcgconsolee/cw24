@@ -599,7 +599,8 @@ form *:nth-child(3) {
     width: 30vw;
     left: 75vw;
     top: 47.5vh;
-    transform: translate(-50%, -50%)
+    transform: translate(-50%, -50%);
+    z-index: 6;
 }
 
 .mission {
@@ -886,4 +887,70 @@ form *:nth-child(3) {
 .imgs img {
     height: 100%;
     width: 100%;
+}
+
+.bar:has(#search-shop) {
+    left: 10%;
+    display: block;
+}
+#search-shop {
+    width: 100%;
+}
+.items {
+    position: absolute;
+    top: 27.5%;
+    height: 67.5%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
+    display: grid;
+    grid-template-columns: auto auto auto;
+    grid-template-rows: auto auto;
+    column-gap: 5%;
+    row-gap: 7.5%
+}
+.item {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    border: 1px solid #050505;
+}
+.item-banner {
+    position: absolute;
+    width: 45%;
+    height: 100%;
+    top: 0;
+}
+.item-banner img {
+    height: 100%;
+}
+.right-side {
+    position: absolute;
+    left:52.5%;
+    top: 0;
+    height: 100%;
+    width: 47.5%;
+    font-size: 10px;
+}
+.item-head {
+    margin-block-start: 5%;
+    letter-spacing: 1.4%;
+}
+.item-desc {
+    font-size: 7px;
+}
+.item-cost {
+    display: grid;
+    grid-template-columns: 17.5% 82.5%;
+    width: 100%;
+    margin-block-start: -.5em;
+    margin-inline-start: -1em;
+}
+.buy-now-btn {
+    position: absolute;
+    bottom: 5%;
+    left: 0%;
+    width: 65%;
+    height: 15%;
+    font-size: 8px;
 }

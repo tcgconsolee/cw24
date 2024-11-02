@@ -317,7 +317,7 @@ $(".accept-btn").each(function() {
             $(".missions-window").show(500)
             acceptMission()
         } else {
-            alert("You must login first before accepting a bounty!")
+            alert("You must logged in before you can accept a bounty!")
         }
     })
 })
@@ -405,4 +405,13 @@ $(".folder").each(function(i){
         $(`#${replaceSpaces($(".title").eq(i).html())}`).show(500);
         $(`#${replaceSpaces($(".title").eq(i).html())} .clues-partition p`).html(`CLUES - ${$(".title").eq(i).html()}`)
     })
+})
+// shop
+
+$(".buy-now-btn").click(function() {
+    if(window.location.href.includes("logged_in=True")) {
+        alert("You do not have enough moeny to buy this item!")
+    } else {
+        alert("You must be logged in to buy items!")
+    }
 })
