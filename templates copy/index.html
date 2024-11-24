@@ -1,0 +1,885 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CW 24 CodeNet</title>
+    <link rel="stylesheet" href="../static/style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+</head>
+<body>
+    <div class="back"></div>
+    <div class="nav-icons">
+        <div class="group"></div>
+        <div class="nav-icon" id = "guide">
+            <div class="icon">
+                <img src="../static/imgs/guide.svg" alt="" draggable = false>
+            </div>
+            <div class="nav-name">
+                <p>Mystery Master's Guide</p>
+            </div>
+        </div>
+        <div class="nav-icon" id = "bounty">
+            <div class="icon">
+                <img src="../static/imgs/bounty.svg" alt="" draggable = false>
+            </div>
+            <div class="nav-name">
+                <p>Spooky Stakes</p>
+            </div>
+        </div>
+        <div class="nav-icon" id = "crew">
+            <div class="icon">
+                <img src="../static/imgs/crew.svg" alt="" draggable = false>
+            </div>
+            <div class="nav-name">
+                <p>Mystery Crew</p>
+            </div>
+        </div>
+        <div class="nav-icon" id = "case">
+            <div class="icon">
+                <img src="../static/imgs/case.svg" alt="" draggable = false>
+            </div>
+            <div class="nav-name">
+                <p>Case Files HQ</p>
+            </div>
+        </div>
+        <div class="nav-icon" id = "shop">
+            <div class="icon">
+                <img src="../static/imgs/shop.svg" alt="" draggable = false>
+            </div>
+            <div class="nav-name">
+                <p>Mystery Mart</p>
+            </div>
+        </div>
+    </div>
+    <div class="menu">
+        <div id="logged-out">
+            <div class="login-btn" onclick = "window.location.href = '/login'">LOGIN</div>
+            <div class="register-btn" onclick = "window.location.href = '/register'">REGISTER</div>
+        </div>
+        <div id="logged-in" style ="display:none">
+            <div class = "account">
+                <p>ACCOUNT AUTHETICATED</p>
+            </div>
+            <div class = "logout-btn" onclick = "window.location.href = '/logout'">
+                <p>LOGOUT</p>
+            </div>
+            <div class="wallet">
+                <div class="coins">
+                    <img src="../static/imgs/coins.svg" alt="">
+                </div>
+                <div class="amount">
+                    <p>0</p>
+                </div>
+            </div>
+            <div class="ongoing-btn">
+                <p>ONGOING INVESTIGATIONS</p>
+            </div>
+        </div>
+    </div>
+    <div class="community-window">
+        <div class="solver-partition">
+            <p>THE SOLVER SOCIETY</p>
+        </div>
+        <div class="msgs">
+            <div class="msg-container">
+                <div class="msg" id = "r">
+                    <p>i need help</p>
+                </div>
+            </div>
+        </div>
+        <div class="msg-btn">
+            <input type="text" placeholder = "LOGIN BEFORE ASKING YOUR DOUBTS">
+        </div>
+    </div>
+    <div class="full-guide-window">
+        <div class="top-navbar">
+            <div class="pgname">
+                <p>MYSTERY MASTER'S GUIDE</p>
+            </div>
+            <div class="iconcontrols">
+                <div class="maximize">
+                    <img src="../static/imgs/maximize.svg" alt="">
+                </div>
+                <div class="restore" style = "display:none">
+                    <img src="../static/imgs/restore.svg" alt="">
+                </div>
+                <div class="cross">
+                    <img src="../static/imgs/close.svg" alt="">
+                </div>
+            </div>
+        </div>
+        <div class="entities-box">
+            <div class="entities-partition">
+                <p>MYSTERIOUS ENTITIES</p>
+            </div>
+            <div class="entities-grid">
+                <div class="anunnaki-btn">ANUNNAKI</div>
+                <div class="evil_entity-btn">EVIL ENTITY</div>
+                <div class="crystal-btn">CRYSTAL</div>
+                <div class="phantom_virus-btn">PHANTOM VIRUS</div>
+                <div class="sarah_ravencroft-btn">SARAH RAVENCROFT</div>
+                <div class="miner_49er-btn">MINER 49ER</div>
+            </div>
+        </div>
+        <div class="info-box">
+            <div class="anunnaki">
+                <p>
+                ANUNNAKI
+                </p>
+                <p>
+                The Anunnaki are a race of creatures living in another dimension. Every few thousand years, during an event called Nibiru, the barrier between their world and Earth grows weak, allowing the Anunnaki to visit Earth.
+                </p>
+                <p>
+                Some of them are good and tend to help humans, while others are evil. It was revealed that the sarcophagus buried beneath Crystal Cove contains the most evil of Anunnaki.
+                </p>
+                <p>
+                The Anunnaki have no physical forms, so they have to inhabit various animals' bodies, thus being responsible for mythological figures such as the Egyptian gods, China's Monkey King, and the Aztec Quetzalcoatl, among others. It is revealed that the animals that can talk are descendants of the Anunnaki. Scooby Doo is one of them.
+                </p>
+            </div>
+            <div class="evil_entity">
+                <p>
+                EVIL ENTITY
+                </p>
+                <p>
+                In its original form, the Evil Entity simply looked like a floating mass of dark green tentacles forming sharp teeth, with two glowing yellow eyes with green sclera.
+                </p>
+                <p>
+                After taking possession of Professor Pericles's body, the Entity first had the appearance of Pericles in giant scale and fully enveloped in a dark aura.
+                </p>
+                <p>
+                After mutating Pericles even further, it looked like a giant parrot head with pointy teeth sticking upwards from its lower jaw/beak, horns and squid-like tentacles. It also had Pericles' scar.
+                </p>
+            </div>
+            <div class="crystal">
+                <p>
+                CRYSTAL
+                </p>
+                <p>
+                Crystal is an extraterrestrial government agent from another Planet posing as a freelance nature photographer.
+                </p>
+                <p>
+                In her human form, Crystal is a slender, tall, tanned woman, almost matching Shaggy's height, with long, ravenous black hair with a navy-blue shine and honey-brown eyes.
+                </p>
+                <p>
+                As an alien, Crystal towers over Shaggy in height, but she still maintains a distinguishable feminine hourglass shape. Her head is large and bulbous, common to the stereotypical appearance of a Grey alien, and she has large eyes. Her light blue body is translucent and composed mostly of fluid, with several bubbles moving around beneath her skin.
+                </p>
+            </div>
+            <div class="phantom_virus">
+                <p>
+                PHANTOM VIRUS
+                </p>
+                <p>
+                The Phantom Virus was an anthropomorphic computer virus. It was created by Bill McLemore from his fellow college student's project in order to try to sabotage the project so he could win a large amount of money.
+                </p>
+                <p>
+                The Phantom Virus was a glowing blue humanoid made of electrical energy with a seemingly artificial intelligence. It was mainly light blue in color and only clothed for disguise.
+                </p>
+                <p>
+                It had an obsession with baseball, mirrored by its creator, which was the gang's main clue as to who the culprit was. It had the ability to extract data from various electrical devices, as well as control machines and cables.
+                </p>
+            </div>
+            <div class="sarah_ravencroft">
+                <p>
+                SARAH RAVENCROFT
+                </p>
+                <p>
+                Sarah Ravencroft was a powerful evil witch from Oakhaven, and the ancestress of the famous horror writer, Ben Ravencroft.
+                </p>
+                <p>
+                A painting in Ben's mansion depicted Sarah as a beautiful young woman with long black hair with a tan headband and fair skin, who was dressed in Wiccan robes, and had a necklace around her neck.
+                </p>
+                <p>
+                Once she was freed from her prison in the book, Sarah's current appearance was revealed: a ghostly-pale, middle-aged woman with long, white hair that flowed and rippled in the air, a lavender gown, and a red pendant that was around her neck. Unlike the false ghost, she did not wear a pointy hat.
+                </p>
+            </div>
+            <div class="miner_49er">
+            <p>
+            MINER 49ER
+            </p>
+            <p>
+            The Miner 49er was one of the four monsters accidentally brought to life by Scooby-Doo and Shaggy Rogers's antics when messing around with the monster making machine.
+            </p>
+            <p>
+            Miner 49er was tall, obese, and had a huge beard and blue eyes. He wore typical mining clothes. He also has green mist surrounding his body.
+            </p>
+            <p>
+            When Miner 49er was transformed into a real monster, he was shown to breathe fire, unlike his man-in-a-mask counterpart. Scooby and Shaggy found this out when they ran into him after Velma gave them the control panel. 
+            </p>
+            </div>
+        </div>
+    </div>
+    <div class="full-bounty-window">
+        <div class="top-navbar">
+            <div class="pgname">
+                <p>SPOOKY STAKES</p>
+            </div>
+            <div class="iconcontrols">
+                <div class="maximize">
+                    <img src="../static/imgs/maximize.svg" alt="">
+                </div>
+                <div class="restore" style = "display:none">
+                    <img src="../static/imgs/restore.svg" alt="">
+                </div>
+                <div class="cross">
+                    <img src="../static/imgs/close.svg" alt="">
+                </div>
+            </div>
+        </div>
+        <div class="bar">
+            <div class="search-btn" id = "search-bounty">
+                <div class="search-icon">
+                    <img src="../static/imgs/search.svg" alt="">
+                </div>
+                <input type="text" placeholder = "Search for anything..">
+            </div>
+            <select class="dropdown">
+                <option value="All" selected>All</option>
+                <option value="Beginner">Beginner</option>
+                <option value="Amateur">Amateur</option>
+                <option value="Expert">Expert</option>
+                <option value="Insane">Insane</option>
+            </select>
+        </div>
+        <div class="scrolljudge">
+            <div class="cards">
+                <div class="card" data-difficulty = "AllBeginner">
+                    <div class="top">
+                        <div class = "target">
+                            <div class="tarname">
+                                <p>BIGFOOT</p>
+                            </div>
+                                <div class="icon-coin">
+                                <img src="../static/imgs/coins.svg" alt="">
+                            </div>
+                            <div class="cash">
+                                <p>1500</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bottom">
+                        <div class="bg">
+                            <img src="../static/imgs/bigfoot.svg" alt="">
+                        </div>
+                        <div class="accept-btn">
+                            <p>ACCEPT</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="card" data-difficulty = "AllAmateur">
+                    <div class="top">
+                        <div class = "target">
+                            <div class="tarname">
+                                <p>BIGFOOT</p>
+                            </div>
+                                <div class="icon-coin">
+                                <img src="../static/imgs/coins.svg" alt="">
+                            </div>
+                            <div class="cash">
+                                <p>1500</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bottom">
+                        <div class="bg">
+                            <img src="../static/imgs/bigfoot.svg" alt="">
+                        </div>
+                        <div class="accept-btn">
+                            <p>ACCEPT</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="card" data-difficulty = "AllBeginner">
+                    <div class="top">
+                        <div class = "target">
+                            <div class="tarname">
+                                <p>BIGFOOT</p>
+                            </div>
+                                <div class="icon-coin">
+                                <img src="../static/imgs/coins.svg" alt="">
+                            </div>
+                            <div class="cash">
+                                <p>1500</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bottom">
+                        <div class="bg">
+                            <img src="../static/imgs/bigfoot.svg" alt="">
+                        </div>
+                        <div class="accept-btn">
+                            <p>ACCEPT</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="card" data-difficulty = "AllExpert">
+                    <div class="top">
+                        <div class = "target">
+                            <div class="tarname">
+                                <p>BIGFOOT</p>
+                            </div>
+                                <div class="icon-coin">
+                                <img src="../static/imgs/coins.svg" alt="">
+                            </div>
+                            <div class="cash">
+                                <p>1500</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bottom">
+                        <div class="bg">
+                            <img src="../static/imgs/bigfoot.svg" alt="">
+                        </div>
+                        <div class="accept-btn">
+                            <p>ACCEPT</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="card" data-difficulty = "AllAmateur">
+                    <div class="top">
+                        <div class = "target">
+                            <div class="tarname">
+                                <p>BIGFOOT</p>
+                            </div>
+                                <div class="icon-coin">
+                                <img src="../static/imgs/coins.svg" alt="">
+                            </div>
+                            <div class="cash">
+                                <p>1500</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bottom">
+                        <div class="bg">
+                            <img src="../static/imgs/bigfoot.svg" alt="">
+                        </div>
+                        <div class="accept-btn">
+                            <p>ACCEPT</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="card" data-difficulty = "AllAmateur">
+                    <div class="top">
+                        <div class = "target">
+                            <div class="tarname">
+                                <p>BIGFOOT</p>
+                            </div>
+                                <div class="icon-coin">
+                                <img src="../static/imgs/coins.svg" alt="">
+                            </div>
+                            <div class="cash">
+                                <p>1500</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bottom">
+                        <div class="bg">
+                            <img src="../static/imgs/bigfoot.svg" alt="">
+                        </div>
+                        <div class="accept-btn">
+                            <p>ACCEPT</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="card" data-difficulty = "AllExpert">
+                    <div class="top">
+                        <div class = "target">
+                            <div class="tarname">
+                                <p>BIGFOOT</p>
+                            </div>
+                                <div class="icon-coin">
+                                <img src="../static/imgs/coins.svg" alt="">
+                            </div>
+                            <div class="cash">
+                                <p>1500</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bottom">
+                        <div class="bg">
+                            <img src="../static/imgs/bigfoot.svg" alt="">
+                        </div>
+                        <div class="accept-btn">
+                            <p>ACCEPT</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="card" data-difficulty = "AllExpert">
+                    <div class="top">
+                        <div class = "target">
+                            <div class="tarname">
+                                <p>BIGFOOT</p>
+                            </div>
+                                <div class="icon-coin">
+                                <img src="../static/imgs/coins.svg" alt="">
+                            </div>
+                            <div class="cash">
+                                <p>1500</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bottom">
+                        <div class="bg">
+                            <img src="../static/imgs/bigfoot.svg" alt="">
+                        </div>
+                        <div class="accept-btn">
+                            <p>ACCEPT</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="card" data-difficulty = "AllInsane">
+                    <div class="top">
+                        <div class = "target">
+                            <div class="tarname">
+                                <p>BIGFOOT</p>
+                            </div>
+                                <div class="icon-coin">
+                                <img src="../static/imgs/coins.svg" alt="">
+                            </div>
+                            <div class="cash">
+                                <p>1500</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bottom">
+                        <div class="bg">
+                            <img src="../static/imgs/bigfoot.svg" alt="">
+                        </div>
+                        <div class="accept-btn">
+                            <p>ACCEPT</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="card" data-difficulty = "AllInsane">
+                    <div class="top">
+                        <div class = "target">
+                            <div class="tarname">
+                                <p>BIGFOOT</p>
+                            </div>
+                                <div class="icon-coin">
+                                <img src="../static/imgs/coins.svg" alt="">
+                            </div>
+                            <div class="cash">
+                                <p>1500</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bottom">
+                        <div class="bg">
+                            <img src="../static/imgs/bigfoot.svg" alt="">
+                        </div>
+                        <div class="accept-btn">
+                            <p>ACCEPT</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+    <div class="missions-window">
+        <div class="close"><img src="../static/imgs/close.svg" alt=""></div>
+        <div class="missions-partition">
+            <p>ONGOING INVESTIGATIONS</p>
+        </div>
+        <div class="mission">
+            <p class = "nothing">Select a bounty first!</p>
+        </div>
+    </div>
+    <div class="full-case-window">
+        <div class="top-navbar">
+            <div class="pgname">
+                <p>CASE FILES HQ</p>
+            </div>
+            <div class="iconcontrols">
+                <div class="maximize">
+                    <img src="../static/imgs/maximize.svg" alt="">
+                </div>
+                <div class="restore" style = "display:none">
+                    <img src="../static/imgs/restore.svg" alt="">
+                </div>
+                <div class="cross">
+                    <img src="../static/imgs/close.svg" alt="">
+                </div>
+            </div>
+        </div>
+        <div class="bar">
+            <div class="search-btn" id = "search-cases">
+                <div class="search-icon">
+                    <img src="../static/imgs/search.svg" alt="">
+                </div>
+                <input type="text" placeholder = "Search for anything..">
+            </div>
+            <div class="upload-btn">
+                <p>UPLOAD YOUR CASE</p>
+            </div>
+        </div>
+        <div class="cases">
+            <div class="folder">
+                <div class="main-body">
+                    <div class="folder-title">
+                        <p class = "title">THE MYSTERIOUS MAN</p>
+                        <p>reported by James</p>
+                    </div>
+                </div>
+                <div class="upper-fold">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="335" height="44" viewBox="0 0 335 44" fill="none">
+                        <path d="M15 0.5H228.855C230.812 0.5 232.749 0.896008 234.548 1.66417L332.555 43.5H0.5V15C0.5 6.99187 6.99187 0.5 15 0.5Z" fill="#D9D9D9" stroke="#050505"/>
+                    </svg>
+                </div>
+                <div class="right-fold"></div>
+            </div>
+            <div class="folder">
+                <div class="main-body">
+                    <div class="folder-title">
+                        <p class = "title">THE MYSTERIOUS MAN</p>
+                        <p>reported by James</p>
+                    </div>
+                </div>
+                <div class="upper-fold">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="335" height="44" viewBox="0 0 335 44" fill="none">
+                        <path d="M15 0.5H228.855C230.812 0.5 232.749 0.896008 234.548 1.66417L332.555 43.5H0.5V15C0.5 6.99187 6.99187 0.5 15 0.5Z" fill="#D9D9D9" stroke="#050505"/>
+                    </svg>
+                </div>
+                <div class="right-fold"></div>
+            </div>
+            <div class="folder">
+                <div class="main-body">
+                    <div class="folder-title">
+                        <p class = "title">THE MYSTERIOUS MAN</p>
+                        <p>reported by James</p>
+                    </div>
+                </div>
+                <div class="upper-fold">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="335" height="44" viewBox="0 0 335 44" fill="none">
+                        <path d="M15 0.5H228.855C230.812 0.5 232.749 0.896008 234.548 1.66417L332.555 43.5H0.5V15C0.5 6.99187 6.99187 0.5 15 0.5Z" fill="#D9D9D9" stroke="#050505"/>
+                    </svg>
+                </div>
+                <div class="right-fold"></div>
+            </div>
+            <div class="folder">
+                <div class="main-body">
+                    <div class="folder-title">
+                        <p class = "title">THE MYSTERIOUS MAN</p>
+                        <p>reported by James</p>
+                    </div>
+                </div>
+                <div class="upper-fold">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="335" height="44" viewBox="0 0 335 44" fill="none">
+                        <path d="M15 0.5H228.855C230.812 0.5 232.749 0.896008 234.548 1.66417L332.555 43.5H0.5V15C0.5 6.99187 6.99187 0.5 15 0.5Z" fill="#D9D9D9" stroke="#050505"/>
+                    </svg>
+                </div>
+                <div class="right-fold"></div>
+            </div>
+            <div class="folder">
+                <div class="main-body">
+                    <div class="folder-title">
+                        <p class = "title">THE MYSTERIOUS MAN</p>
+                        <p>reported by James</p>
+                    </div>
+                </div>
+                <div class="upper-fold">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="335" height="44" viewBox="0 0 335 44" fill="none">
+                        <path d="M15 0.5H228.855C230.812 0.5 232.749 0.896008 234.548 1.66417L332.555 43.5H0.5V15C0.5 6.99187 6.99187 0.5 15 0.5Z" fill="#D9D9D9" stroke="#050505"/>
+                    </svg>
+                </div>
+                <div class="right-fold"></div>
+            </div>
+            <div class="folder">
+                <div class="main-body">
+                    <div class="folder-title">
+                        <p class = "title">THE MYSTERIOUS MAN</p>
+                        <p>reported by James</p>
+                    </div>
+                </div>
+                <div class="upper-fold">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="335" height="44" viewBox="0 0 335 44" fill="none">
+                        <path d="M15 0.5H228.855C230.812 0.5 232.749 0.896008 234.548 1.66417L332.555 43.5H0.5V15C0.5 6.99187 6.99187 0.5 15 0.5Z" fill="#D9D9D9" stroke="#050505"/>
+                    </svg>
+                </div>
+                <div class="right-fold"></div>
+            </div>
+        </div>
+        
+    </div>
+    <div class="full-crew-window">
+        <div class="top-navbar">
+            <div class="pgname">
+                <p>MYSTERY CREW</p>
+            </div>
+            <div class="iconcontrols">
+                <div class="maximize">
+                    <img src="../static/imgs/maximize.svg" alt="">
+                </div>
+                <div class="restore" style = "display:none">
+                    <img src="../static/imgs/restore.svg" alt="">
+                </div>
+                <div class="cross">
+                    <img src="../static/imgs/close.svg" alt="">
+                </div>
+            </div>
+        </div>
+        <div class="dispatch-box">
+            <div class="help-text">
+                To help you in times of grave danger, we offer to dispatch our team of recruited professionals
+            </div>
+            <div class="team">
+                <div class="person">
+                    <img src="../static/imgs/shaggy.svg" alt="">
+                    <p class="pname">Norville "Shaggy" Rogers</p>
+                </div>
+                <div class="person">
+                    <img src="../static/imgs/fred.svg" alt="">
+                    <p class="pname">Fred Jones</p>
+                </div>
+                <div class="person">
+                    <img src="../static/imgs/daphne.svg" alt="">
+                    <p class="pname">Daphne Blake</p>
+                </div>
+                <div class="person">
+                    <img src="../static/imgs/velma.svg" alt="">
+                    <p class="pname">Velma Dinkley</p>
+                </div>
+            </div>
+            <div class="dispatch-btn">
+                <p>DISPATCH</p>
+            </div>
+        </div>
+        <div class="map-box">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14030.132488084015!2d77.06661547681236!3d28.463487180762506!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390d18e6fa2d35c7%3A0xa9f1fdca6e247b7a!2sDelhi%20Public%20School%20Sushant%20Lok%20%7C%20Top%20%7C%20Best%20School%20in%20Gurgaon!5e0!3m2!1sen!2sin!4v1730447159236!5m2!1sen!2sin" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+        <div class="legend-box">
+            <div class="location">
+                <img src="../static/imgs/location.svg" alt="">
+                <p>our current location</p>
+            </div>
+        </div>
+    </div>
+    <div class="full-shop-window">
+        <div class="top-navbar">
+            <div class="pgname">
+                <p>MYSTERY MART</p>
+            </div>
+            <div class="iconcontrols">
+                <div class="maximize">
+                    <img src="../static/imgs/maximize.svg" alt="">
+                </div>
+                <div class="restore" style = "display:none">
+                    <img src="../static/imgs/restore.svg" alt="">
+                </div>
+                <div class="cross">
+                    <img src="../static/imgs/close.svg" alt="">
+                </div>
+            </div>
+        </div>
+        <div class="bar">
+            <div class="search-btn" id = "search-shop">
+                <div class="search-icon">
+                    <img src="../static/imgs/search.svg" alt="">
+                </div>
+                <input type="text" placeholder = "Search for anything..">
+            </div>
+        </div>
+        <div class="items">
+            <div class="item">
+                <div class="item-banner">
+                    <img src="../static/imgs/milk_bottle.svg" alt="">
+                </div>
+                <div class="right-side">
+                    <div class="item-head">
+                        <p>Exploding Milk Bottles</p>
+                    </div>
+                    <div class="item-desc">
+                        <p>milk bottles that explode on impact</p>
+                    </div>
+                    <div class="item-cost">
+                        <div class="item-coin">
+                            <img src="../static/imgs/coins.svg" alt="">
+                        </div>
+                        <p>20</p>
+                    </div>
+                    <div class="buy-now-btn">
+                        <p>BUY NOW</p>
+                    </div>
+                </div>
+            </div>
+            <div class="item">
+                <div class="item-banner">
+                    <img src="../static/imgs/tranquilizer_gun.svg" alt="">
+                </div>
+                <div class="right-side">
+                    <div class="item-head">
+                        <p>Tranquilizer Gun</p>
+                    </div>
+                    <div class="item-desc">
+                        <p>shoots darts containing sedatives</p>
+                    </div>
+                    <div class="item-cost">
+                        <div class="item-coin">
+                            <img src="../static/imgs/coins.svg" alt="">
+                        </div>
+                        <p>200</p>
+                    </div>
+                    <div class="buy-now-btn">
+                        <p>BUY NOW</p>
+                    </div>
+                </div>
+            </div>
+            <div class="item">
+                <div class="item-banner">
+                    <img src="../static/imgs/primero_llave.svg" alt="">
+                </div>
+                <div class="right-side">
+                    <div class="item-head">
+                        <p>Primero Llave</p>
+                    </div>
+                    <div class="item-desc">
+                        <p>flintlock pistol used to open the gate to the fire dimension</p>
+                    </div>
+                    <div class="item-cost">
+                        <div class="item-coin">
+                            <img src="../static/imgs/coins.svg" alt="">
+                        </div>
+                        <p>400</p>
+                    </div>
+                    <div class="buy-now-btn">
+                        <p>BUY NOW</p>
+                    </div>
+                </div>
+            </div>
+            <div class="item">
+                <div class="item-banner">
+                    <img src="../static/imgs/disk.svg" alt="">
+                </div>
+                <div class="right-side">
+                    <div class="item-head">
+                        <p>Planispheric Disk</p>
+                    </div>
+                    <div class="item-desc">
+                        <p>the planispheric disk is a map which contains coordinates to a place of infinite treasure</p>
+                    </div>
+                    <div class="item-cost">
+                        <div class="item-coin">
+                            <img src="../static/imgs/coins.svg" alt="">
+                        </div>
+                        <p>1000</p>
+                    </div>
+                    <div class="buy-now-btn">
+                        <p>BUY NOW</p>
+                    </div>
+                </div>
+            </div>
+            <div class="item">
+                <div class="item-banner">
+                    <img src="../static/imgs/samurai_sword.svg" alt="">
+                </div>
+                <div class="right-side">
+                    <div class="item-head">
+                        <p>Samurai Sword</p>
+                    </div>
+                    <div class="item-desc">
+                        <p>sword with a curved edge, not only for extra style</p>
+                    </div>
+                    <div class="item-cost">
+                        <div class="item-coin">
+                            <img src="../static/imgs/coins.svg" alt="">
+                        </div>
+                        <p>500</p>
+                    </div>
+                    <div class="buy-now-btn">
+                        <p>BUY NOW</p>
+                    </div>
+                </div>
+            </div>
+            <div class="item">
+                <div class="item-banner">
+                    <img src="../static/imgs/axe.svg" alt="">
+                </div>
+                <div class="right-side">
+                    <div class="item-head">
+                        <p>Axe</p>
+                    </div>
+                    <div class="item-desc">
+                        <p>just a normal axe, except its imbued with a little bit of shaggy</p>
+                    </div>
+                    <div class="item-cost">
+                        <div class="item-coin">
+                            <img src="../static/imgs/coins.svg" alt="">
+                        </div>
+                        <p>600</p>
+                    </div>
+                    <div class="buy-now-btn">
+                        <p>BUY NOW</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="upload-window">
+        <div class="close"><img src="../static/imgs/close.svg" alt=""></div>
+        <div class="upload-partition">
+            <p>UPLOAD YOUR CASE</p>
+        </div>
+        <div class="upload-bottom">
+            <div class="upload-heading">HEADING</div>
+            <input type="text" class="upload-input" placeholder = "24 characters max" maxlength = "24">
+            <div class="upload-quotes">QUOTE</div>
+            <input type="text" class="upload-quote" placeholder = "64 characters max" maxlength="64">
+            <input type = "file" style = "visibility: hidden;" id = "files" accept = "image/png, image/jpeg" multiple>
+            <label for="files"  class="upload-imgs-btn">UPLOAD IMAGES (4 MAX)</label>
+            <div class="upload-imgs"></div>
+            <div class="upload-create-btn">CREATE</div>
+        </div>
+    </div>
+    <div class="clues-window" id = "the_mysterious_man">
+        <div class="close"><img src="../static/imgs/close.svg" alt=""></div>
+        <div class="clues-partition">
+            <p></p>
+        </div>
+        <div class="header">"For four whole days, i could swear there was a man chasing me"</div>
+        <div class="imgs">
+            <img src="../static/imgs/img1.svg" alt="" class="img1">
+            <img src="../static/imgs/img2.svg" alt="" class="img2">
+            <img src="../static/imgs/img3.svg" alt="" class="img3">
+            <img src="../static/imgs/img4.svg" alt="" class="img4">
+        </div>
+    </div>
+    <script src = "../static/main.js"></script>
+    <script src = "../static/db.js"></script>
+    <script>
+        document.querySelectorAll("*").forEach((elem)=>{
+            elem.addEventListener("dragstart", function( event ) {
+                var img = new Image();
+                img.src = 'data:image/gif;base64,R0lGODlhAQABAIAAAAUEBAAAACwAAAAAAQABAAACAkQBADs=';
+                event.dataTransfer.setDragImage(img, 0, 0);
+            }, false);
+        })
+        let username="";
+        document.addEventListener("DOMContentLoaded", function() {
+            if(window.location.href.includes("logged_in=True")) {
+                document.getElementById("logged-out").style.display = "none";
+                document.getElementById("logged-in").style.display = "block";
+                document.querySelector(".msg-btn input").style.pointerEvents = "all";
+                document.querySelector(".msg-btn input").placeholder = "TYPE SOMETHING HERE..";
+            }
+        })
+        var jqDisplay = $('div.upload-imgs');
+        $("#files").change(function(event) {
+            jqDisplay.html("")
+            if(parseInt($("#files").get(0).files.length) > 4) {
+                alert("You can only a maximum of four files!");
+            } else {
+                for(let i = 0;i<event.target.files.length;i++) {
+                    var reader = new FileReader();
+                    var selectedFile = event.target.files[i]
+                    reader.onload = function (event) {
+                        var imageSrc = event.target.result;
+                        jqDisplay.html(jqDisplay.html() + ' <img src="' + imageSrc + '" alt="uploaded Image" class = "img' + (i+1) + '">');
+                    };
+                    reader.readAsDataURL(selectedFile); 
+                } 
+            }
+        })
+    </script>
+</body>
+</html>

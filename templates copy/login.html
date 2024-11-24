@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/style.css">
+    <title>Login</title>
+</head>
+<body>
+    <div class="hero">
+        <p>LOGIN</p>
+    </div>
+    <div class="close">
+        <img src="../static/imgs/close.svg" alt="" onclick = "window.location.href = '/'">
+    </div>
+    <form method ="post">
+        <input type="text" placeholder = "Username" id = "uname" name="uname" value = "{{value}}">
+        <input type="password" placeholder = "Password" id = "psw" name ="psw">
+        <div class="forgot-btn" onclick = "uname()">Forgot your password?</div>
+        <input type="submit" value = "LOGIN">        
+    </form>
+    <p class = "invalid">INVALID USERNAME OR PASSWORD</p>
+    <script>
+        function uname() {
+            if(document.getElementById('uname').value == "") {
+                return;
+            }
+            window.location.href = `/inbox/${document.getElementById('uname').value}`
+        }
+        if(document.getElementById("uname").value == "") {
+            document.querySelector(".invalid").style.display = "none"
+        } else {
+            document.querySelector(".invalid").style.display = "block"
+        }
+    </script>
+</body>
+</html>
